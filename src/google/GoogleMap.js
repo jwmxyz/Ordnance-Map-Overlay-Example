@@ -15,7 +15,7 @@ class GoogleMap extends React.Component {
         let self = this;
         if (window.google == undefined) {
             const googleMapScript = document.createElement("script");
-            googleMapScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD_OQnW1d1XkEEQmimGB-7bI24VT9pYaQA&libraries=places&libraries=geometry,visualization";
+            googleMapScript.src = "https://maps.googleapis.com/maps/api/js?key=API_KEY&libraries=places&libraries=geometry,visualization";
             window.document.body.appendChild(googleMapScript);
             googleMapScript.addEventListener("load", function () {
                 self.setState({ googleMap: self.createGoogleMap() }, () => {
