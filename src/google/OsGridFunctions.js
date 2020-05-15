@@ -27,6 +27,7 @@ function renderOsGridReference(map) {
             if (columnWeight >= 800000 || columnWeight < 0) {
                 continue;
             }
+
             var latLng = new OsGridRef(columnWeight, rowWeight).toLatLon();
             var left = new window.google.maps.LatLng({
                 lat: latLng.lat,
@@ -50,7 +51,15 @@ function renderOsGridReference(map) {
                 lat: latLng.lat,
                 lng: latLng.lng
             });
+
+            var centreLng = (right.lng() + left.lng()) / 2;
+            var centreLat = (topRight.lat() + right.lat()) /2; 
             
+            var centrePointOsGrid = new OsGridRef(
+                columnWeight + size / 2,
+                rowWeight + size / 2
+            ).toString(2).substring(0,2);
+
             var polygon = new window.google.maps.Polygon({
                 paths: [
                     left,
@@ -63,9 +72,20 @@ function renderOsGridReference(map) {
                 strokeWeight: 3,
                 geodesic: true
             });
+
+            var marker = new window.google.maps.Marker({
+                position: new window.google.maps.LatLng({
+                    lat: centreLat,
+                    lng: centreLng
+                }),
+                label: centrePointOsGrid,
+                icon: 'hidden',
+                map: map
+            });
+
+            marker.set(map)
             polygon.setMap(map);
             polygonGrid.push(polygon);
-
 
             defaultSizeLng += size;
         }
