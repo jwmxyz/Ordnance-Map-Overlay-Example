@@ -1,7 +1,7 @@
 import React from 'react';
 import { OsGridFunctions } from './OsGridFunctions';
 
-class GoogleMap extends React.Component {
+class GoogleMapAdvanced extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,7 +13,7 @@ class GoogleMap extends React.Component {
 
     componentDidMount() {
         let self = this;
-        if (window.google == undefined) {
+        if (window.google === undefined) {
             const googleMapScript = document.createElement("script");
             googleMapScript.src = "https://maps.googleapis.com/maps/api/js?key=API_KEY&libraries=places&libraries=geometry,visualization";
             window.document.body.appendChild(googleMapScript);
@@ -38,11 +38,11 @@ class GoogleMap extends React.Component {
             <div
                 id="google-map"
                 ref={this.googleMapRef}
-                style={{ width: "100vw", height: "90vh", minHeight: "inherit" }}>
+                style={{ width: "1000px", height: "700px", minHeight: "inherit" }}>
             </div>
         );
     }
 }
 
 
-export default GoogleMap;
+export default GoogleMapAdvanced;

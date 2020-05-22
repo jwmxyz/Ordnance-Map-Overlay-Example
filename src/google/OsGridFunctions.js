@@ -11,10 +11,9 @@ export const OsGridFunctions ={
  * @param {} map 
  */
 function renderOsGridReference(map) {
-    var column = 10;
+    var column = 13;
     var row = 7;
     var size = 100000;
-
     var defaultSizeLat = 0;
     for (var i = 0; i < column; i++) {
         var rowWeight = defaultSizeLat;
@@ -27,7 +26,6 @@ function renderOsGridReference(map) {
             if (columnWeight >= 800000 || columnWeight < 0) {
                 continue;
             }
-
             var latLng = new OsGridRef(columnWeight, rowWeight).toLatLon();
             var left = new window.google.maps.LatLng({
                 lat: latLng.lat,
