@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import GoogleMap from './google/GoogleMap'
 import GoogleMapAdvanced from './google/GoogleMapAdvanced'
 import {
