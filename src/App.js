@@ -20,18 +20,16 @@ function App() {
               <Link to="/advanced">Advanced Example</Link>
           </ul>
         </nav>
-
         <Switch>
-          <Route path="/">
-            <GoogleMap />
-          </Route>
-          <Route path="/simple">
-            <GoogleMap />
-          </Route>
-          <Route path="/advanced">
+          <Route exact path="/">
             <GoogleMapAdvanced />
           </Route>
-
+          <Route exact path="/simple">
+            <GoogleMap />
+          </Route>
+          <Route exact path="/advanced">
+            <GoogleMapAdvanced />
+          </Route>
         </Switch>
       </div>
     </Router>

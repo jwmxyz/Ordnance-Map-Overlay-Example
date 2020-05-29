@@ -1,5 +1,6 @@
 import React from 'react';
 import { OsGridFunctions } from './OsGridFunctions';
+import OsGridRef, { LatLon } from "geodesy/osgridref";
 
 class GoogleMap extends React.Component {
     constructor(props) {
@@ -13,14 +14,18 @@ class GoogleMap extends React.Component {
 
     componentDidMount() {
         let self = this;
-        if (window.google == undefined) {
+        if (window.google === undefined) {
             const googleMapScript = document.createElement("script");
-            googleMapScript.src = "https://maps.googleapis.com/maps/api/js?key=API_KEY&libraries=places&libraries=geometry,visualization";
+            googleMapScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCP7dItotgX9Ggsz-ZjtA4-PDKb0qd_M10&libraries=places&libraries=geometry,visualization";
             window.document.body.appendChild(googleMapScript);
             googleMapScript.addEventListener("load", function () {
                 self.setState({ googleMap: self.createGoogleMap() }, () => {
                     OsGridFunctions.renderOsGridReference(self.state.googleMap)
                 });
+            });
+        }  else {
+            self.setState({ googleMap: self.createGoogleMap() }, () => {
+                OsGridFunctions.renderOsGridReference(self.state.googleMap)
             });
         }
     }
