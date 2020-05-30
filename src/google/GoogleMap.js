@@ -33,6 +33,7 @@ class GoogleMap extends React.Component {
     createGoogleMap = () => {
         var map = new window.google.maps.Map(this.googleMapRef.current, {                                  
             zoom: 6,    
+            scaleControl: true,
             center: new window.google.maps.LatLng(53.67, -1.86), 
         });
         return map;

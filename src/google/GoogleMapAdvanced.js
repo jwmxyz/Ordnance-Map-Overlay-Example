@@ -19,19 +19,39 @@ class GoogleMapAdvanced extends React.Component {
             window.document.body.appendChild(googleMapScript);
             googleMapScript.addEventListener("load", function () {
                 self.setState({ googleMap: self.createGoogleMap() }, () => {
-                    OsGridFunctions.renderOsGridReference(self.state.googleMap)
+                    self.addEventListeners()
                 });
             });
         } else {
             self.setState({ googleMap: self.createGoogleMap() }, () => {
-                OsGridFunctions.renderOsGridReference(self.state.googleMap)
+                self.addEventListeners()
             });
         }
     }
+    
+    addEventListeners = () =>{
+        let state = this.state;
+        window.google.maps.event.addListener(
+            state.googleMap,
+            "dragend",
+            function () {
+                OsGridFunctions.renderAdvancedOsGridReference(state.googleMap)
+            }
+        );
+        window.google.maps.event.addListener(
+            state.googleMap,
+            "zoom_changed",
+            function () {
+                OsGridFunctions.renderAdvancedOsGridReference(state.googleMap)
+            }
+        );
+    }
+
 
     createGoogleMap = () => {
         var map = new window.google.maps.Map(this.googleMapRef.current, {                                  
             zoom: 9,    
+            scaleControl: true,
             center: new window.google.maps.LatLng(53.67, -1.86), 
         });
         return map;
@@ -39,10 +59,11 @@ class GoogleMapAdvanced extends React.Component {
 
     render() {
         return (
-            <div
-                id="google-map"
+            <div>
+                <div><span>Drag/Zoom in or out to show the grid</span></div>
+                <div id="google-map"
                 ref={this.googleMapRef}
-                style={{ width: "1000px", height: "700px", minHeight: "inherit" }}>
+                style={{ width: "100vw", height: "85vh", minHeight: "inherit" }}></div>
             </div>
         );
     }
