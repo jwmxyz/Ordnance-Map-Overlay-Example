@@ -4,7 +4,7 @@ A simple application that will render an ordnance survey grid on a GoogleMap usi
 
 - Includes scaling
 
-Read about the implementation on [my blog](https://blog.jwm.xyz/posts/ordnance-survey-map-using-google-maps).
+Read about the implementation on [my blog](https://blog.jwm.xyz/ordnance-survey-map-using-google-maps-and-polygons-part-one/).
 
 # Setup
 
